@@ -1419,21 +1419,17 @@
             <div id="feedbackMessage"></div>
         </div>
 
-        <div class="app-stores">
-            <a href="#" class="store-badge" onclick="showComingSoon('Google Play')">
-                <span style="font-size: 2rem;">📱</span>
-                <div>
-                    <div style="font-size: 0.8rem;">Download on</div>
-                    <div>Google Play</div>
-                </div>
+        <div class="app-download" style="text-align: center; margin-top: 3rem;">
+            <a href="/parkease.apk" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; font-size: 1.1rem;" download onclick="trackAPKDownload()">
+                <span style="font-size: 1.5rem;">📱</span>
+                Download Now (APK)
             </a>
-            <a href="#" class="store-badge" onclick="showComingSoon('App Store')">
-                <span style="font-size: 2rem;">🍎</span>
-                <div>
-                    <div style="font-size: 0.8rem;">Download on</div>
-                    <div>App Store</div>
-                </div>
-            </a>
+            <p style="color: #a0a0a0; margin-top: 1rem; font-size: 0.9rem;">
+                For Android devices • Version 1.0.0 • 15 MB
+            </p>
+            <p style="color: #808080; margin-top: 0.5rem; font-size: 0.85rem;">
+                💡 Enable "Install from Unknown Sources" in your device settings
+            </p>
         </div>
     </section>
 
@@ -1559,9 +1555,10 @@
             mobileMenu.classList.remove('active');
         }
 
-        // Coming soon functionality
-        function showComingSoon(feature) {
-            alert(`🚀 ${feature} is coming soon! We're working hard to bring you the best parking experience. Stay tuned!`);
+        // APK download tracking (optional)
+        function trackAPKDownload() {
+            console.log('APK download initiated');
+            // You can add analytics tracking here if needed
         }
 
         // Smooth scrolling for navigation links
