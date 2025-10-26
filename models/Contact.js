@@ -27,7 +27,10 @@ const contactSchema = new mongoose.Schema({
     trim: true,
     validate: {
       validator: function(phone) {
-        return !phone || validator.isMobilePhone(phone, 'any');
+        // Allow empty or validate if provided (more lenient)
+        if (!phone || phone === '') return true;
+        // Accept phone numbers with +, -, spaces, and digits (10-15 chars)
+        return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
       },
       message: 'Please provide a valid phone number'
     }

@@ -1683,8 +1683,12 @@
                     email: email || ''
                 };
 
-                // Submit to API
-                const response = await fetch('http://localhost:3000/api/feedback', {
+                // Submit to API (use relative URL to work both locally and on Render)
+                const apiUrl = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:3000/api/feedback'
+                    : '/api/feedback';
+                
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1762,8 +1766,12 @@
                     message: formData.get('message')
                 };
 
-                // Submit to API
-                const response = await fetch('http://localhost:3000/api/contact', {
+                // Submit to API (use relative URL to work both locally and on Render)
+                const apiUrl = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:3000/api/contact'
+                    : '/api/contact';
+                
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
