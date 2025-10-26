@@ -9,6 +9,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Serve static files from the root directory
+app.use(express.static(__dirname));
+
 // Security middleware
 app.use(helmet());
 
@@ -64,17 +67,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Root endpoint
+// Serve index.html for root route
 app.get('/', (req, res) => {
-  res.json({
-    message: 'Welcome to ParkEase API',
-    version: '1.0.0',
-    endpoints: {
-      health: '/api/health',
-      feedback: '/api/feedback',
-      contact: '/api/contact'
-    }
-  });
+  res.sendFile(__dirname + '/index.html');
 });
 
 // 404 handler
