@@ -5,10 +5,12 @@ const Feedback = require('../models/Feedback');
 // Submit feedback
 router.post('/', async (req, res) => {
   try {
+    console.log('📝 Feedback submission received:', req.body);
     const { type, message, rating, email } = req.body;
     
     // Validate required fields
     if (!type || !message) {
+      console.log('❌ Validation failed: missing type or message');
       return res.status(400).json({
         success: false,
         error: 'Feedback type and message are required'
@@ -27,6 +29,7 @@ router.post('/', async (req, res) => {
     
     // Save to database
     const savedFeedback = await feedback.save();
+    console.log('✅ Feedback saved successfully:', savedFeedback._id);
     
     res.status(201).json({
       success: true,

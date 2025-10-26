@@ -5,10 +5,12 @@ const Contact = require('../models/Contact');
 // Submit contact form
 router.post('/', async (req, res) => {
   try {
+    console.log('📧 Contact form submission received:', req.body);
     const { name, email, phone, city, subject, message } = req.body;
     
     // Validate required fields
     if (!name || !email || !subject || !message) {
+      console.log('❌ Validation failed: missing required fields');
       return res.status(400).json({
         success: false,
         error: 'Name, email, subject, and message are required'
@@ -29,6 +31,7 @@ router.post('/', async (req, res) => {
     
     // Save to database
     const savedContact = await contact.save();
+    console.log('✅ Contact saved successfully:', savedContact._id);
     
     res.status(201).json({
       success: true,
